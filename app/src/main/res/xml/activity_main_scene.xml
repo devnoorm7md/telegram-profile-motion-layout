@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="3856">
+        <OnSwipe
+            motion:dragDirection="dragDown"
+            motion:onTouchUp="decelerateAndComplete"
+            motion:touchAnchorId="@+id/content"
+            motion:touchRegionId="@+id/content" />
+        <KeyFrameSet>
+            <KeyPosition
+                motion:framePosition="30"
+                motion:motionTarget="@+id/profile_picture"
+                motion:percentHeight="0"
+                motion:percentWidth="0" />
+            <KeyPosition
+                motion:framePosition="90"
+                motion:motionTarget="@+id/profile_picture"
+                motion:percentHeight="1"
+                motion:percentWidth="1" />
+            <KeyPosition
+                motion:framePosition="90"
+                motion:motionTarget="@+id/name"
+                motion:transitionEasing="decelerate" />
+            <KeyPosition
+                motion:framePosition="2"
+                motion:motionTarget="@+id/edit_icon"
+                motion:sizePercent="0"
+                motion:transitionEasing="accelerate" />
+        </KeyFrameSet>
+    </Transition>
+
+    <Transition
+        motion:constraintSetEnd="@+id/middle"
+        motion:constraintSetStart="@+id/start"
+        motion:duration="1000">
+        <OnSwipe
+            motion:onTouchUp="autoCompleteToEnd"
+            motion:touchAnchorId="@+id/content"
+            motion:touchRegionId="@+id/content" />
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:background="@color/brand"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"/>
+        <Constraint
+            android:id="@+id/back_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+        <Constraint
+            android:id="@+id/more_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="16dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/back_icon"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toTopOf="@+id/back_icon" />
+        <Constraint
+            android:id="@+id/profile_picture"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/wed_image"
+            motion:transitionEasing="accelerate"
+            motion:layout_constraintBottom_toBottomOf="@+id/app_bar"
+            motion:layout_constraintStart_toStartOf="@+id/back_icon"
+            motion:layout_constraintTop_toBottomOf="@+id/back_icon" />
+        <Constraint
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:textColor="@color/white"
+            android:elevation="4dp"
+            motion:layout_constraintBottom_toTopOf="@id/subscribers_number"
+            motion:layout_constraintStart_toEndOf="@id/profile_picture"
+            motion:layout_constraintTop_toTopOf="@+id/profile_picture">
+        </Constraint>
+        <Constraint
+            android:id="@+id/subscribers_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            motion:layout_constraintBottom_toBottomOf="@+id/profile_picture"
+            motion:layout_constraintStart_toStartOf="@+id/name"
+            motion:layout_constraintTop_toBottomOf="@+id/name"/>
+        <Constraint
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@+id/app_bar" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:background="@color/black"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+        <Constraint
+            android:id="@+id/profile_picture"
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+            android:scaleType="centerCrop"
+            android:scaleX="1.2"
+            android:scaleY="1.2"
+            android:src="@drawable/wed_image"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintHorizontal_bias="0.0" />
+        <Constraint
+            android:id="@+id/back_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+        <Constraint
+            android:id="@+id/more_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="16dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/back_icon"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toTopOf="@+id/back_icon" />
+        <Constraint
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@+id/app_bar" />
+        <Constraint
+            android:elevation="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/name"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="32dp"
+            android:layout_marginStart="24dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/app_bar"
+            motion:layout_constraintTop_toTopOf="@+id/app_bar"
+            android:layout_marginBottom="36dp"
+            motion:layout_constraintVertical_bias="1.0" />
+        <Constraint
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/subscribers_number"
+            motion:layout_constraintStart_toStartOf="@+id/app_bar"
+            motion:layout_constraintBottom_toBottomOf="@+id/profile_picture"
+            motion:layout_constraintTop_toBottomOf="@+id/name"
+            android:layout_marginStart="24dp" >
+            <CustomAttribute
+                motion:attributeName="textSize"
+                motion:customDimension="8sp" />
+            <CustomAttribute
+                motion:attributeName="textColor"
+                motion:customColorValue="#727272" />
+        </Constraint>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/middle" >
+        <Constraint
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="86dp"
+            android:background="@color/brand"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+        <Constraint
+            android:id="@+id/back_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="28dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+        <Constraint
+            android:id="@+id/more_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="16dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/back_icon"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toTopOf="@+id/back_icon" />
+        <Constraint
+            android:id="@+id/profile_picture"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/wed_image"
+            motion:layout_constraintBottom_toBottomOf="@+id/back_icon"
+            motion:layout_constraintStart_toEndOf="@+id/back_icon"
+            motion:layout_constraintTop_toTopOf="@id/back_icon" />
+        <Constraint
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:textColor="@color/white"
+            android:elevation="5dp"
+            motion:layout_constraintBottom_toTopOf="@id/subscribers_number"
+            motion:layout_constraintStart_toEndOf="@id/profile_picture"
+            motion:layout_constraintTop_toTopOf="@+id/profile_picture">
+            <CustomAttribute
+                motion:attributeName="textSize"
+                motion:customDimension="10sp" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/subscribers_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            motion:layout_constraintBottom_toBottomOf="@+id/profile_picture"
+            motion:layout_constraintStart_toStartOf="@+id/name"
+            motion:layout_constraintTop_toBottomOf="@+id/name" >
+            <CustomAttribute
+                motion:attributeName="textSize"
+                motion:customDimension="8sp" />
+            <CustomAttribute
+                motion:attributeName="textColor"
+                motion:customColorValue="#99FBFBFB" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintTop_toBottomOf="@+id/app_bar" />
+    </ConstraintSet>
+</MotionScene>
